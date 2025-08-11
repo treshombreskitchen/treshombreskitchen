@@ -27,6 +27,27 @@ body{
 .menu-toggle{display:none;background:none;border:0;font-size:1.2rem}
 
 /* HERO */
+.hero {
+  background: url("home-bg.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+/* Optional dark overlay for text readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+}
+
+/* Make sure hero content is above the overlay */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
 .hero{position:relative;overflow:hidden;padding:4rem 0 6rem}
 .hero-content{max-width:720px}
 .hero h1{font-size:2.4rem;margin:0 0 .6rem}
