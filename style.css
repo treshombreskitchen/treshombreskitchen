@@ -27,7 +27,6 @@ body{
 .menu-toggle{display:none;background:none;border:0;font-size:1.2rem}
 
 /* HERO */
-}
 .hero{position:relative;overflow:hidden;padding:4rem 0 6rem}
 .hero-content{max-width:720px}
 .hero h1{font-size:2.4rem;margin:0 0 .6rem}
