@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrightSite — Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="logo" href="index.html">BrightSite</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content container animate-fade">
+        <h1>Make your idea shine ✨</h1>
+        <p class="lead">A colorful, modern website template — ready to edit and publish on GitHub Pages.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#features">Learn More</a>
+          <a class="btn ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+      <!-- Decorative SVG shapes -->
+      <svg class="hero-shape shape--one" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff7ab6"/><stop offset="1" stop-color="#6a8dff"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="60" fill="url(#g1)" opacity="0.9" />
+      </svg>
+      <svg class="hero-shape shape--two" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#ffd36a"/><stop offset="1" stop-color="#ff7ab6"/></linearGradient></defs>
+        <rect x="20" y="20" width="160" height="160" rx="24" fill="url(#g2)" opacity="0.85" />
+      </svg>
+    </section>
+
+    <section id="features" class="features container">
+      <article class="feature-card animate-up">
+        <h3>Vibrant Design</h3>
+        <p>Bright accents and playful shapes that keep visitors engaged.</p>
+      </article>
+      <article class="feature-card animate-up" style="transition-delay:120ms">
+        <h3>Responsive</h3>
+        <p>Looks great on phones, tablets, and desktops — built mobile-first.</p>
+      </article>
+      <article class="feature-card animate-up" style="transition-delay:240ms">
+        <h3>Easy to Edit</h3>
+        <p>Clear structure and commented code so you can replace content quickly.</p>
+      </article>
+    </section>
+
+    <section class="showcase">
+      <div class="container grid">
+        <div class="showcase-text animate-fade">
+          <h2>What you can do next</h2>
+          <ul>
+            <li>Replace hero text &amp; SVG with your own brand and images</li>
+            <li>Swap colors in <code>style.css</code> to match your palette</li>
+            <li>Connect contact form to a backend or Formspree</li>
+          </ul>
+        </div>
+        <div class="showcase-image animate-fade" aria-hidden="true">
+          <!-- placeholder for a demo image (replace in images/ ) -->
+          <div class="image-placeholder">Your image here</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> BrightSite — Built with ✨</p>
+      <div class="socials">
+        <a href="#">Twitter</a>
+        <a href="#">Dribbble</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
