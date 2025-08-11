@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Ocean Grill</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation (same as index.html) -->
+  <nav class="nav container">
+    <a href="index.html" class="logo">Ocean Grill</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Menu Section -->
+  <section class="container">
+    <h1>Our Menu</h1>
+    <p class="lead">Fresh seafood & premium meats, grilled to perfection.</p>
+
+    <div class="menu-grid">
+      <!-- Item 1 -->
+      <div class="menu-item">
+        <img src="images/grilled_lobster.jpg" alt="Grilled Lobster">
+        <h3>Grilled Lobster</h3>
+        <p>Freshly caught lobster, butter-grilled to perfection.</p>
+        <p class="price">$25</p>
+        <button class="btn primary add-to-cart" data-name="Grilled Lobster" data-price="25">Add to Order</button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="menu-item">
+        <img src="images/ribeye_steak.jpg" alt="Ribeye Steak">
+        <h3>Ribeye Steak</h3>
+        <p>Juicy, marbled ribeye grilled over open flame.</p>
+        <p class="price">$30</p>
+        <button class="btn primary add-to-cart" data-name="Ribeye Steak" data-price="30">Add to Order</button>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="menu-item">
+        <img src="images/smoked_salmon.jpg" alt="Smoked Salmon">
+        <h3>Smoked Salmon</h3>
+        <p>Delicately smoked salmon served with fresh greens.</p>
+        <p class="price">$20</p>
+        <button class="btn primary add-to-cart" data-name="Smoked Salmon" data-price="20">Add to Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to Cart Page -->
+  <div class="container" style="margin-top: 2rem;">
+    <a href="cart.html" class="btn ghost">View My Order</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
