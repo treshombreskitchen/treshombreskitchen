@@ -1,53 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Order - Ocean Grill</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Ocean Grill</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      padding: 0.8rem;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    .remove-btn {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background: #cc0000;
+    }
+    .checkout-btn {
+      display: block;
+      margin: 1rem auto 0;
+      padding: 0.8rem 1.2rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav container">
-    <a href="index.html" class="logo">Ocean Grill</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="cart.html" class="active">My Order</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Cart Section -->
-  <section class="container">
-    <h1>My Order</h1>
-    <table class="cart-table">
+  <div class="cart-container">
+    <h1>Your Order</h1>
+    <table id="cart-table">
       <thead>
         <tr>
           <th>Item</th>
           <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
           <th>Remove</th>
         </tr>
       </thead>
-      <tbody id="cart-items">
-        <!-- Items will be inserted here -->
-      </tbody>
+      <tbody></tbody>
     </table>
+    <h2 id="cart-total">Total: $0.00</h2>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
 
-    <div class="cart-total">
-      <h2>Total: $<span id="cart-total">0.00</span></h2>
-    </div>
+  <script>
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
+      let total = 0;
 
-    <div class="order-form">
-      <h3>Customer Information</h3>
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="text" id="phone" placeholder="Your Phone Number" required>
-      <textarea id="address" placeholder="Delivery Address" required></textarea>
-      <button class="btn primary" id="place-order">Place Order</button>
-    </div>
-  </section>
+      cart.forEach((item, index) => {
+        let row = document.createElement('tr');
 
-  <script src="cart.js"></script>
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>${item.quantity}</td>
+          <td>$${(item.price * item.quantity).toFixed(2)}</td>
+          <td><button class="remove-btn" data-index="${index}">X</button></td>
+        `;
+
+        tbody.appendChild(row);
+        total += item.price * item.quantity;
+      });
+
+      document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.splice(this.dataset.index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadCart);
+  </script>
 </body>
 </html>
