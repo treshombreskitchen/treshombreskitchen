@@ -1,63 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Menu - Ocean Grill</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .menu-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .menu-item .details {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .menu-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .menu-item p {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 1rem;
+    }
+    .menu-item button {
+      padding: 0.6rem 1rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .menu-item button:hover {
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Navigation (same as index.html) -->
   <nav class="nav container">
     <a href="index.html" class="logo">Ocean Grill</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="cart.html">Cart</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Menu Section -->
-  <section class="container">
-    <h1>Our Menu</h1>
-    <p class="lead">Fresh seafood & premium meats, grilled to perfection.</p>
-
-    <div class="menu-grid">
-      <!-- Item 1 -->
-      <div class="menu-item">
-        <img src="images/grilled_lobster.jpg" alt="Grilled Lobster">
-        <h3>Grilled Lobster</h3>
-        <p>Freshly caught lobster, butter-grilled to perfection.</p>
-        <p class="price">$25</p>
-        <button class="btn primary add-to-cart" data-name="Grilled Lobster" data-price="25">Add to Order</button>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="menu-item">
-        <img src="images/ribeye_steak.jpg" alt="Ribeye Steak">
-        <h3>Ribeye Steak</h3>
-        <p>Juicy, marbled ribeye grilled over open flame.</p>
-        <p class="price">$30</p>
-        <button class="btn primary add-to-cart" data-name="Ribeye Steak" data-price="30">Add to Order</button>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="menu-item">
-        <img src="images/smoked_salmon.jpg" alt="Smoked Salmon">
-        <h3>Smoked Salmon</h3>
-        <p>Delicately smoked salmon served with fresh greens.</p>
-        <p class="price">$20</p>
-        <button class="btn primary add-to-cart" data-name="Smoked Salmon" data-price="20">Add to Order</button>
+  <h1 style="text-align:center; margin-top: 1rem;">Our Menu</h1>
+  
+  <div class="menu-container">
+    <div class="menu-item">
+      <img src="images/grilled-lobster.jpg" alt="Grilled Lobster">
+      <div class="details">
+        <div>
+          <h3>Grilled Lobster</h3>
+          <p>Fresh lobster grilled to perfection with garlic butter.</p>
+          <strong>$25</strong>
+        </div>
+        <button onclick="addToCart('Grilled Lobster', 25)">Add to Cart</button>
       </div>
     </div>
-  </section>
-
-  <!-- Link to Cart Page -->
-  <div class="container" style="margin-top: 2rem;">
-    <a href="cart.html" class="btn ghost">View My Order</a>
+    <div class="menu-item">
+      <img src="images/seafood-platter.jpg" alt="Seafood Platter">
+      <div class="details">
+        <div>
+          <h3>Seafood Platter</h3>
+          <p>A mix of shrimp, crab, and fish with dipping sauces.</p>
+          <strong>$30</strong>
+        </div>
+        <button onclick="addToCart('Seafood Platter', 30)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="menu-item">
+      <img src="images/t-bone-steak.jpg" alt="T-Bone Steak">
+      <div class="details">
+        <div>
+          <h3>T-Bone Steak</h3>
+          <p>Juicy steak served with mashed potatoes and veggies.</p>
+          <strong>$28</strong>
+        </div>
+        <button onclick="addToCart('T-Bone Steak', 28)">Add to Cart</button>
+      </div>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(name + " has been added to your cart!");
+    }
+  </script>
 </body>
 </html>
