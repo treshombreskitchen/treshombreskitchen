@@ -6,6 +6,7 @@
   <title>Menu - Ocean Grill</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Your existing menu styles */
     .menu-container {
       max-width: 1000px;
       margin: 2rem auto;
@@ -49,6 +50,17 @@
 </head>
 <body>
 
+  <!-- 🌊 Navigation -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
     <h1 style="text-align:center;">Our Menu</h1>
     <div class="menu-container" id="menu-list">
@@ -89,7 +101,7 @@
       }
       localStorage.setItem('cart', JSON.stringify(cart));
       alert(`${name} added to cart!`);
-      window.location.href = "cart.html"; // optional: direct to cart
+      window.location.href = "cart.html"; // Go to cart page
     }
 
     document.addEventListener('DOMContentLoaded', renderMenu);
