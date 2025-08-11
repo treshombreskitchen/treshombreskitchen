@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Cart - Ocean Grill</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
     .cart-container {
       max-width: 800px;
       margin: 2rem auto;
+      background: rgba(255,255,255,0.9);
       padding: 1.5rem;
-      background: rgba(255,255,255,0.85);
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 1rem;
     }
     th, td {
       padding: 0.8rem;
       border-bottom: 1px solid #ddd;
       text-align: center;
     }
-    .remove-btn {
-      background: #ff4d4d;
+    th {
+      background: var(--accent1);
       color: white;
+    }
+    .cart-actions button {
+      padding: 0.4rem 0.8rem;
       border: none;
-      padding: 0.4rem 0.6rem;
+      background: red;
+      color: white;
       border-radius: 6px;
       cursor: pointer;
     }
-    .remove-btn:hover {
-      background: #cc0000;
+    .cart-actions button:hover {
+      opacity: 0.8;
     }
     .checkout-btn {
-      display: block;
-      margin: 1rem auto 0;
-      padding: 0.8rem 1.2rem;
+      margin-top: 1rem;
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      padding: 0.8rem 1.5rem;
       color: white;
       font-weight: bold;
-      border: none;
       border-radius: 8px;
       cursor: pointer;
+      display: inline-block;
     }
     .checkout-btn:hover {
       transform: translateY(-2px);
@@ -56,19 +54,18 @@
   </style>
 </head>
 <body>
-   <!-- 🌊 Navigation -->
+
+  <!-- 🌊 Navigation -->
   <nav>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html" class="active">Menu</a></li>
-      <li><a href="cart.html">Cart</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="cart.html" class="active">Cart</a></li>
     </ul>
   </nav>
 
   <div class="cart-container">
-    <h1>Your Order</h1>
+    <h1>Your Cart</h1>
     <table id="cart-table">
       <thead>
         <tr>
@@ -79,47 +76,63 @@
           <th>Remove</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <!-- Cart items go here -->
+      </tbody>
     </table>
     <h2 id="cart-total">Total: $0.00</h2>
-    <button class="checkout-btn">Proceed to Checkout</button>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
   </div>
 
   <script>
-    function loadCart() {
+    function renderCart() {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let tbody = document.querySelector('#cart-table tbody');
-      tbody.innerHTML = '';
+      let tbody = document.querySelector("#cart-table tbody");
+      tbody.innerHTML = "";
       let total = 0;
 
       cart.forEach((item, index) => {
-        let row = document.createElement('tr');
+        let row = document.createElement("tr");
+        let itemTotal = item.price * item.quantity;
+        total += itemTotal;
 
         row.innerHTML = `
           <td>${item.name}</td>
           <td>$${item.price.toFixed(2)}</td>
-          <td>${item.quantity}</td>
-          <td>$${(item.price * item.quantity).toFixed(2)}</td>
-          <td><button class="remove-btn" data-index="${index}">X</button></td>
+          <td>
+            <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity(${index}, this.value)">
+          </td>
+          <td>$${itemTotal.toFixed(2)}</td>
+          <td class="cart-actions"><button onclick="removeItem(${index})">X</button></td>
         `;
-
         tbody.appendChild(row);
-        total += item.price * item.quantity;
       });
 
-      document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
-
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          let cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.splice(this.dataset.index, 1);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          loadCart();
-        });
-      });
+      document.getElementById("cart-total").textContent = `Total: $${total.toFixed(2)}`;
     }
 
-    document.addEventListener('DOMContentLoaded', loadCart);
+    function updateQuantity(index, quantity) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart[index].quantity = parseInt(quantity);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function checkout() {
+      alert("Thank you for your order! (Checkout system to be implemented)");
+      localStorage.removeItem('cart');
+      window.location.href = "index.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCart);
   </script>
+
 </body>
 </html>
