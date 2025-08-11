@@ -7,49 +7,40 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .menu-container {
+      max-width: 1000px;
+      margin: 2rem auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
     }
     .menu-item {
-      background: white;
+      background: rgba(255,255,255,0.85);
+      padding: 1rem;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
     }
     .menu-item img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .menu-item .details {
-      padding: 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border-radius: 10px;
+      margin-bottom: 0.8rem;
     }
     .menu-item h3 {
-      margin: 0;
-      font-size: 1.2rem;
+      margin: 0.4rem 0;
     }
     .menu-item p {
-      color: #666;
       font-size: 0.9rem;
-      margin: 0.5rem 0 1rem;
+      color: var(--muted);
     }
     .menu-item button {
-      padding: 0.6rem 1rem;
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
       color: white;
       border: none;
+      padding: 0.6rem 1rem;
       border-radius: 8px;
+      margin-top: 0.5rem;
       cursor: pointer;
       font-weight: bold;
-      transition: transform 0.2s;
     }
     .menu-item button:hover {
       transform: translateY(-2px);
@@ -57,66 +48,52 @@
   </style>
 </head>
 <body>
-  <nav class="nav container">
-    <a href="index.html" class="logo">Ocean Grill</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html" class="active">Menu</a></li>
-      <li><a href="cart.html">Cart</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
 
-  <h1 style="text-align:center; margin-top: 1rem;">Our Menu</h1>
-  
-  <div class="menu-container">
-    <div class="menu-item">
-      <img src="images/grilled-lobster.jpg" alt="Grilled Lobster">
-      <div class="details">
-        <div>
-          <h3>Grilled Lobster</h3>
-          <p>Fresh lobster grilled to perfection with garlic butter.</p>
-          <strong>$25</strong>
-        </div>
-        <button onclick="addToCart('Grilled Lobster', 25)">Add to Cart</button>
-      </div>
-    </div>
-    <div class="menu-item">
-      <img src="images/seafood-platter.jpg" alt="Seafood Platter">
-      <div class="details">
-        <div>
-          <h3>Seafood Platter</h3>
-          <p>A mix of shrimp, crab, and fish with dipping sauces.</p>
-          <strong>$30</strong>
-        </div>
-        <button onclick="addToCart('Seafood Platter', 30)">Add to Cart</button>
-      </div>
-    </div>
-    <div class="menu-item">
-      <img src="images/t-bone-steak.jpg" alt="T-Bone Steak">
-      <div class="details">
-        <div>
-          <h3>T-Bone Steak</h3>
-          <p>Juicy steak served with mashed potatoes and veggies.</p>
-          <strong>$28</strong>
-        </div>
-        <button onclick="addToCart('T-Bone Steak', 28)">Add to Cart</button>
-      </div>
+  <div class="container">
+    <h1 style="text-align:center;">Our Menu</h1>
+    <div class="menu-container" id="menu-list">
+      <!-- Menu items will be inserted here -->
     </div>
   </div>
 
   <script>
+    const menuItems = [
+      { name: "Grilled Salmon", price: 15.99, img: "images/salmon.jpg" },
+      { name: "Beef Steak", price: 18.99, img: "images/steak.jpg" },
+      { name: "Lobster Tail", price: 25.50, img: "images/lobster.jpg" },
+      { name: "Shrimp Platter", price: 14.25, img: "images/shrimp.jpg" }
+    ];
+
+    function renderMenu() {
+      const menuList = document.getElementById('menu-list');
+      menuItems.forEach(item => {
+        let div = document.createElement('div');
+        div.classList.add('menu-item');
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <h3>${item.name}</h3>
+          <p>$${item.price.toFixed(2)}</p>
+          <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+        `;
+        menuList.appendChild(div);
+      });
+    }
+
     function addToCart(name, price) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       let existingItem = cart.find(item => item.name === name);
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity++;
       } else {
         cart.push({ name, price, quantity: 1 });
       }
       localStorage.setItem('cart', JSON.stringify(cart));
-      alert(name + " has been added to your cart!");
+      alert(`${name} added to cart!`);
+      window.location.href = "cart.html"; // optional: direct to cart
     }
+
+    document.addEventListener('DOMContentLoaded', renderMenu);
   </script>
+
 </body>
 </html>
