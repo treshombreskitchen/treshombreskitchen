@@ -121,3 +121,34 @@ body{
   color: var(--accent1);
 }
 
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.cart-total {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.order-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.order-form input,
+.order-form textarea {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+}
