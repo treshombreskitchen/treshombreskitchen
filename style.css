@@ -86,4 +86,7 @@ body{
     transform: translateY(0);
   }
 }
-
+.highlight {
+  color: #ffeb3b; /* Bright yellow */
+  font-weight: bold;
+}
