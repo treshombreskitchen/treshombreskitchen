@@ -41,7 +41,18 @@ body{
 .hero-shape{position:absolute;width:420px;height:420px;filter:blur(18px)}
 .shape--one{right:-80px;top:-40px;transform:rotate(10deg)}
 .shape--two{left:-120px;bottom:-80px}
-
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh; /* fills the whole screen */
+  background-image: url("images/home-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* FEATURES */
 .features{display:flex;gap:1.2rem;margin-top:2rem}
 .feature-card{flex:1;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.5));padding:1.2rem;border-radius:12px;backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(15,23,36,.06)}
