@@ -52,6 +52,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.6; /* 1 = fully visible, 0.5 = 50% transparent */
 }
 /* FEATURES */
 .features{display:flex;gap:1.2rem;margin-top:2rem}
