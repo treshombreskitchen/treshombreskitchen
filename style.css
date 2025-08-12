@@ -53,14 +53,12 @@ body{
   align-items: center;
   justify-content: center;
 }
-
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(255, 255, 255, 0.9); /* white overlay at 90% opacity */
   /* Use rgba(0,0,0,0.9) for dark overlay instead */
-}
 /* FEATURES */
 .features{display:flex;gap:1.2rem;margin-top:2rem}
 .feature-card{flex:1;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.5));padding:1.2rem;border-radius:12px;backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(15,23,36,.06)}
