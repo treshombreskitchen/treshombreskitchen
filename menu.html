@@ -84,23 +84,7 @@
       { name: "Shrimp Platter", price: 14.25, img: "images/shrimp.jpg" },
       { name: "Roasted Chicken", price: 18.25, img: "images/chicken.jpg" },
       { name: "Grilled Scallops", price: 22.99, img: "images/scallops.jpg" }
-    ];
-// Insert floating heading for drinks
-const drinksHeading = document.createElement('h2');
-drinksHeading.textContent = "🍹 Drinks & Beverages";
-drinksHeading.style.textAlign = "center";
-drinksHeading.style.color = "gold";
-drinksHeading.style.marginTop = "2rem";
-drinksHeading.style.gridColumn = "1 / -1"; // makes it span full width in grid
-menuList.appendChild(drinksHeading);
-
-     const menuItems = [
-      { name: "Grilled Salmon", price: 15.99, img: "images/salmon.jpg" },
-      { name: "Beef Steak", price: 18.99, img: "images/steak.jpg" },
-      { name: "Lobster Tail", price: 25.50, img: "images/lobster.jpg" },
-      { name: "Shrimp Platter", price: 14.25, img: "images/shrimp.jpg" },
-      { name: "Roasted Chicken", price: 18.25, img: "images/chicken.jpg" },
-      { name: "Grilled Scallops", price: 22.99, img: "images/scallops.jpg" }
+   
     ];
       function renderMenu() {
       const menuList = document.getElementById('menu-list');
