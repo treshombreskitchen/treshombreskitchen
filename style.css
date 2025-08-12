@@ -42,7 +42,6 @@ body{
 .shape--one{right:-80px;top:-40px;transform:rotate(10deg)}
 .shape--two{left:-120px;bottom:-80px}
 .hero {
-  .hero {
   position: relative;
   overflow: hidden;
   min-height: 100vh; /* fills the whole screen */
@@ -54,13 +53,13 @@ body{
   align-items: center;
   justify-content: center;
 }
-  .hero::before {
+
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.9); /* white overlay at 40% opacity */
-  /* Or use rgba(0,0,0,0.4) for dark overlay */
-}
+  background-color: rgba(255, 255, 255, 0.9); /* white overlay at 90% opacity */
+  /* Use rgba(0,0,0,0.9) for dark overlay instead */
 }
 /* FEATURES */
 .features{display:flex;gap:1.2rem;margin-top:2rem}
