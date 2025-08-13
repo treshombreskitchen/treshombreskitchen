@@ -319,3 +319,33 @@ img {
     color: var(--text);
   }
 }
+/* Mobile Navigation Fix */
+@media (max-width: 768px) {
+  /* Show the hamburger icon */
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Hide nav links initially */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+  }
+
+  /* Show nav links when .show is active */
+  .nav-links.show {
+    display: flex;
+  }
+}
