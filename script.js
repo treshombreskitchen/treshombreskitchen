@@ -10,4 +10,12 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
 
     alert(`${name} added to your order!`);
   });
+  <script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('show');
+});
+</script>
+</body>
+</html>
+
 });
