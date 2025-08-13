@@ -28,48 +28,6 @@ body {
   margin: 0 auto;
   padding: 2rem;
 }
-
-/* NAV */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-.logo {
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-.nav-links {
-  list-style: flex;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-.nav-links a {
-  color: var(--text);
-  text-decoration: none;
-  padding: 0.5rem 0.6rem;
-  border-radius: 8px;
-  transition: all 0.2s;
-}
-.nav-links a:hover {
-  transform: translateY(-3px);
-}
-.nav-links a.active {
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  color: white;
-}
-.menu-toggle {
-  display: none;
-  background: none;
-  border: 0;
-  font-size: 1.2rem;
-}
-
 /* HERO */
 .hero {
   position: relative;
@@ -296,32 +254,6 @@ img {
   height: auto;
 }
 
-/* Mobile nav */
-.nav-links {
-  display: none;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  padding: 1rem;
-  border-radius: var(--radius);
-}
-.nav-links.show {
-  display: flex;
-}
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  .nav-links {
-    display: none;
-  }
-  .nav-links.show {
-    display: flex;
-  }
-}
-
 /* Blink animation */
 .blink {
   animation: blink-opacity 1s infinite;
@@ -354,8 +286,7 @@ img {
   color: white;
   cursor: pointer;
 }
-
-/* Mobile layout */
+/* Mobile nav */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -364,16 +295,21 @@ img {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: rgba(0,0,0,0.9);
+    background: var(--bg);
     position: absolute;
-    top: 60px; /* below the header */
+    top: 100%;
     right: 0;
-    padding: 1rem;
     width: 200px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 
   .nav-links.show {
     display: flex;
+  }
+
+  .nav-links a {
+    color: var(--text);
   }
 }
 
