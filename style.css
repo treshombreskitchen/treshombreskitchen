@@ -330,3 +330,50 @@ img {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+/* Desktop layout */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+/* Hide mobile menu toggle button on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 60px; /* below the header */
+    right: 0;
+    padding: 1rem;
+    width: 200px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
