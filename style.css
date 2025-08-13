@@ -180,3 +180,34 @@ body{
   max-width: 100%;
   height: auto;
 }
+/* Mobile nav hidden by default */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+/* Show menu when toggled */
+.nav-links.show {
+  display: flex;
+}
+/* ... all your existing CSS ... */
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
