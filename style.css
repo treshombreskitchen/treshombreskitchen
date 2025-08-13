@@ -28,6 +28,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
 }
+
 /* HERO */
 .hero {
   position: relative;
@@ -262,7 +263,12 @@ img {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-/* Desktop layout */
+
+/* Navigation */
+.nav {
+  position: relative; /* so absolute .nav-links anchors here */
+  z-index: 5;
+}
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -270,7 +276,6 @@ img {
   margin: 0;
   padding: 0;
 }
-
 .nav-links li a {
   text-decoration: none;
   color: white;
@@ -286,6 +291,7 @@ img {
   color: white;
   cursor: pointer;
 }
+
 /* Mobile nav */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -293,6 +299,7 @@ img {
   }
 
   .nav-links {
+    z-index: 10;
     display: none;
     flex-direction: column;
     background: var(--bg);
@@ -312,8 +319,3 @@ img {
     color: var(--text);
   }
 }
-.nav {
-  position: relative;  /* so the absolute .nav-links anchors to this */
-  z-index: 5;
-}
-
