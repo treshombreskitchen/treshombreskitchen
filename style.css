@@ -43,7 +43,7 @@ body {
   font-size: 1.1rem;
 }
 .nav-links {
-  list-style: none;
+  list-style: flex;
   display: flex;
   gap: 1rem;
   margin: 0;
