@@ -312,4 +312,8 @@ img {
     color: var(--text);
   }
 }
+.nav {
+  position: relative;  /* so the absolute .nav-links anchors to this */
+  z-index: 5;
+}
 
