@@ -212,18 +212,10 @@ body{
   }
 }
 .blink {
-  animation: pulse-color 1s infinite;
+  animation: blink-opacity 1s infinite;
 }
 
-@keyframes pulse-color {
-  0%, 100% { color: gold; }
-  50% { color: red; }
-}
-.blink {
-  animation: pulse-color 1s infinite;
-}
-
-@keyframes pulse-color {
-  0%, 100% { color: gold; }
-  50% { color: red; }
+@keyframes blink-opacity {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
