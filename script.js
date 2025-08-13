@@ -1,21 +1,23 @@
-document.querySelectorAll(".add-to-cart").forEach(button => {
-  button.addEventListener("click", () => {
-    let name = button.dataset.name;
-    let price = parseFloat(button.dataset.price);
-    
-    // Save to local storage
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push({ name, price });
-    localStorage.setItem("cart", JSON.stringify(cart));
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-    alert(`${name} added to your order!`);
-  });
-  <script>
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  document.querySelector('.nav-links').classList.toggle('show');
-});
-</script>
-</body>
-</html>
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  // Any other JS you already have can go here
+  // Example: Blink effect (if you added it via JS)
+  // const blinkElement = document.querySelector('.blink');
+  // if (blinkElement) {
+  //   setInterval(() => {
+  //     blinkElement.style.visibility = 
+  //       blinkElement.style.visibility === 'hidden' ? 'visible' : 'hidden';
+  //   }, 1000);
+  // }
 
 });
