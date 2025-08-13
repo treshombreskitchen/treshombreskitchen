@@ -211,3 +211,11 @@ body{
     display: flex;
   }
 }
+.blink {
+  animation: pulse-color 1s infinite;
+}
+
+@keyframes pulse-color {
+  0%, 100% { color: gold; }
+  50% { color: red; }
+}
