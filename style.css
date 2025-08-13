@@ -61,11 +61,6 @@ body{
   background-color: rgba(255, 255, 255, 0.1); /* only 10% white, so bg is 90% visible */
   z-index: 0;
 }
-/* FEATURES */
-.features{display:flex;gap:1.2rem;margin-top:2rem}
-.feature-card{flex:1;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.5));padding:1.2rem;border-radius:12px;backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(15,23,36,.06)}
-.feature-card h3{margin:0 0 .4rem}
-
 /* SHOWCASE */
 .grid{display:grid;grid-template-columns:1fr 420px;align-items:center;gap:2rem}
 .image-placeholder{height:260px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--accent3),var(--accent2));color:white;font-weight:700}
